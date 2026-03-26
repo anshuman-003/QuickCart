@@ -8,11 +8,8 @@ export const inngest = new Inngest({ id: "dailyshop-next" });
 //^Inngest function to save user data to database
 
 export const syncUserData = inngest.createFunction(
-    {
-        id: 'sync-user-data',
-    }, {
-    event: "clerk/user.created",
-},
+    {id: 'sync-user-data'},
+    {event: "clerk/user.created"},
     async ({ event, step }) => {
         const { user } = event.data;
         // Save user data to database
@@ -32,9 +29,9 @@ export const syncUserData = inngest.createFunction(
 
 export const syncUserDataUpdated = inngest.createFunction(
     {
-        id: 'sync-user-data-updated',
+        id: 'sync-user-data-updated'
     }, {
-    event: "clerk/user.updated",
+    event: "clerk/user.updated"
 },
     async ({ event, step }) => {
         const { user } = event.data;
@@ -58,9 +55,9 @@ export const syncUserDataUpdated = inngest.createFunction(
 
 export const syncUserDataDeleted = inngest.createFunction(
     {
-        id: 'sync-user-data-deleted',
+        id: 'sync-user-data-deleted'
     }, {
-    event: "clerk/user.deleted",
+    event: "clerk/user.deleted"
 },
     async ({ event, step }) => {
         const { user } = event.data;
