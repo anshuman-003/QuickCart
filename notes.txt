@@ -1,0 +1,15 @@
+1. Integrating Clerk
+    a. added functionality on sign-in btn using openSignIn function from Clerk
+    
+    Clerk Functions used: openSignIn , user , clerkWebhooks
+
+2. check db.js , cached.promise is performance optimisation --> It ensures that if multiple requests come in simultaneously, they all wait for the same initial connection attempt instead of creating multiple, redundant connections.
+3. Create Database MongoDB used 
+
+    config/db.js -> models/User.js -> 
+
+4. A webhook is an event-driven method of communication between applications.
+
+5. To manage clerk webhooks we use (Inngest)
+
+6. await User.create({}) , User.findByIdAndUpdate({}) ,....
