@@ -81,10 +81,10 @@ export const syncUserDataDeleted = inngest.createFunction(
 
 export const createUserOrder = inngest.createFunction(
     {id : 'create-user-order',
-    batchEvents : {
-        maxSize : 5,
-        timeout : '5s'
-    },
+    // batchEvents : {
+    //     maxSize : 5,
+    //     timeout : '5s'
+    // },
     triggers : [{event : 'order/created'}]
     },
     
