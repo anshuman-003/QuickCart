@@ -13,3 +13,73 @@
 5. To manage clerk webhooks we use (Inngest)
 
 6. await User.create({}) , User.findByIdAndUpdate({}) ,....
+
+7. In Inngest (run section in /env/production/runs) nothing is displayed there , so we have to check the logs to see if the functions are working or not. You can check the logs in the Inngest dashboard. If you see any errors there, you can debug them accordingly. ---> it got solved after i created the webhook endpoint in clerk webhooks ...
+
+8. 👉 useUser() gives:
+
+    name
+    email
+    profile image
+    etc.
+
+    📌 This is the best way for UI(FrontEnd)
+
+9.👉 currentUser():
+
+    returns full backend user object
+    works in server components, APIs, actions
+
+10. *** Problem in fetchUserData in app context and in GET() function of /api/user/data route.js file auth() returns NULL
+
+11. To complete our SellerDashboard first we completed addProduct feature as follows
+
+    a. create /api/product/add/route.js
+    b. config cloudinary here
+    c. create async POST function 
+    d. check there whether user is seller or not using /lib/authSeller.js function by passing userID getting from getAuth(req)
+    e. if seller then
+    f. get data = req.formData() from frontend including name,category,price,images 
+    g. files uploading to clouding function written using buffers and very carefully
+    h. save data to db So created a Products models
+    i. Integrate it with frontEnd 
+    j. Go to file /seller/page.jsx and import getToken();
+    k. complete handleSubmit function
+    l. create a new FormData() and append the fields
+    m. send that axios.post(route , formData , headers)
+    n. get data and use
+
+12. create aPI to fetch product data and display in seller dashboard product list
+
+*.  useEffect(() => {
+    if(user){
+      fetchSellerProduct();
+    }
+  }, [user])
+
+this lines means when we have user then only fetchProducts() 
+
+**. onClick={() => router.push(`/product/${product._id}`)} this takes you to different routes
+
+13. Now handle home page popular product section (/components/homeProducts.jsx)
+    a. create /api/product/list/route.js
+    b. copy entirely from route.js of sellerlist just remove seller verification
+    c. in appContext.js handle the function fetchProduct()
+
+14. Add feature to give notification when addToCart is done by user
+but when we click buy we go to cart page and there when we refresh the page all cart data gets removed 
+So now we will create an API to get cart items 
+
+15. handle setAddress functionality in cart page 
+    we create an api for it
+    We need to store address in database
+
+    a. create a address model 
+    b. get userId and address form request params
+    c. update address in DB
+
+
+16. to place an order 
+    a. create order model 
+    b. write /api/order/create/route.js
+    c. use inngest to create order
